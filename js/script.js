@@ -52,8 +52,7 @@ var quotes = [
 
 function getRandomQuote() {
   var random = Math.floor(Math.random() * quotes.length);
-  console.log(random);
-  return random;
+  return quotes[random];
 }
 
 /***
@@ -72,14 +71,14 @@ function getRandomQuote() {
 function printQuote() {
   var n = getRandomQuote();
   var quoteElement = document.getElementsByClassName("quote")[0];
-  var quoteText = document.createTextNode(quotes[n].quote);
+  var quoteText = document.createTextNode(n.quote);
   quoteElement.replaceChild(quoteText, quoteElement.childNodes[0]);
   var sourceElement = document.getElementsByClassName("source")[0];
-  var sourceText = document.createTextNode(quotes[n].source);
+  var sourceText = document.createTextNode(n.source);
   sourceElement.replaceChild(sourceText, sourceElement.childNodes[0]);
-  if (quotes[n].citation) {
+  if (n.citation) {
     var citationElement = document.getElementsByClassName("citation")[0];
-    var citationText = document.createTextNode(quotes[n].citation);
+    var citationText = document.createTextNode(n.citation);
     if (!citationElement) {
       citationElement = document.createElement("span");
       citationElement.className = "citation";
@@ -98,9 +97,9 @@ function printQuote() {
       sourceElement.removeChild(citationElement);
     }
   }
-  if (quotes[n].year) {
+  if (n.year) {
     var yearElement = document.getElementsByClassName("year")[0];
-    var yearText = document.createTextNode(quotes[n].year);
+    var yearText = document.createTextNode(n.year);
     if (!yearElement) {
       yearElement = document.createElement("span");
       yearElement.className = "year";
